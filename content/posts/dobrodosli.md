@@ -3,6 +3,7 @@ title: "Dobrodošli na moj blog"
 date: "2026-04-18"
 excerpt: "Ovo je prvi post na mom blogu posvećenom pravoslavnoj hrišćanskoj veri. Ovde ću deliti svoja razmišljanja, molitve i svedočanstva o životu u Hristu."
 tags: ["Uvod", "Pravoslavlje"]
+image: "/post1.jpg"
 ---
 
 Dragi čitaoče,

@@ -17,20 +17,21 @@ export default async function BlogPage({
   const filtered = tag ? allPosts.filter((p) => p.tags.includes(tag)) : allPosts;
 
   return (
-    <main className="max-w-2xl mx-auto px-6 py-16">
-      <h1 className="text-3xl font-bold mb-4">Blog</h1>
+    <main className="max-w-6xl mx-auto px-6 py-16">
+      <h1 className="text-3xl font-bold mb-2">Blog</h1>
       <p className="text-gray-600 dark:text-gray-400 mb-10">
         Zapisi o pravoslavnoj hrišćanskoj veri.
       </p>
 
+      {/* Filter tagovi */}
       {allTags.length > 0 && (
-        <div className="flex flex-wrap gap-2 mb-10">
+        <div className="flex flex-wrap justify-center gap-3 mb-12">
           <a
             href="/blog"
-            className={`text-xs px-3 py-1.5 rounded-full border transition-colors ${
+            className={`px-5 py-2.5 rounded-full text-sm font-medium border transition-colors ${
               !tag
-                ? "bg-foreground text-background border-foreground"
-                : "border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800"
+                ? "bg-gray-900 text-white border-gray-900 dark:bg-white dark:text-gray-900 dark:border-white"
+                : "bg-white dark:bg-transparent border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800"
             }`}
           >
             Svi
@@ -39,10 +40,10 @@ export default async function BlogPage({
             <a
               key={t}
               href={`/blog?tag=${encodeURIComponent(t)}`}
-              className={`text-xs px-3 py-1.5 rounded-full border transition-colors ${
+              className={`px-5 py-2.5 rounded-full text-sm font-medium border transition-colors ${
                 tag === t
-                  ? "bg-foreground text-background border-foreground"
-                  : "border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800"
+                  ? "bg-gray-900 text-white border-gray-900 dark:bg-white dark:text-gray-900 dark:border-white"
+                  : "bg-white dark:bg-transparent border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800"
               }`}
             >
               {t}
@@ -51,10 +52,15 @@ export default async function BlogPage({
         </div>
       )}
 
+      {/* Grid postova */}
       {filtered.length === 0 ? (
-        <p className="text-gray-500">Nema postova za ovaj tag.</p>
+        <p className="text-gray-500 text-center">Nema postova za ovaj tag.</p>
       ) : (
-        filtered.map((post) => <PostCard key={post.slug} post={post} />)
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filtered.map((post) => (
+            <PostCard key={post.slug} post={post} />
+          ))}
+        </div>
       )}
     </main>
   );

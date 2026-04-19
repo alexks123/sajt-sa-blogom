@@ -38,17 +38,21 @@ export default function Home() {
       </section>
 
       {/* Poslednji postovi */}
-      <section className="max-w-2xl mx-auto px-6 py-16">
-        <h2 className="text-sm font-semibold uppercase tracking-widest text-gray-400 dark:text-gray-500 mb-6">
+      <section className="max-w-6xl mx-auto px-6 py-16">
+        <h2 className="text-sm font-semibold uppercase tracking-widest text-gray-400 dark:text-gray-500 mb-8">
           Poslednji postovi
         </h2>
         {recentPosts.length === 0 ? (
           <p className="text-gray-500">Nema objavljenih postova.</p>
         ) : (
-          recentPosts.map((post) => <PostCard key={post.slug} post={post} />)
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {recentPosts.map((post) => (
+              <PostCard key={post.slug} post={post} />
+            ))}
+          </div>
         )}
         {recentPosts.length > 0 && (
-          <div className="pt-8">
+          <div className="pt-10 text-center">
             <Link
               href="/blog"
               className="text-sm font-medium underline underline-offset-4 hover:text-gray-600 dark:hover:text-gray-400 transition-colors"

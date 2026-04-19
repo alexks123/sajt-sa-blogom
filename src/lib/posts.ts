@@ -13,6 +13,7 @@ export interface PostMeta {
   excerpt: string;
   tags: string[];
   readTime: number;
+  image?: string;
 }
 
 export interface Post extends PostMeta {
@@ -38,6 +39,7 @@ export function getAllPosts(): PostMeta[] {
         excerpt: data.excerpt as string,
         tags: (data.tags as string[]) ?? [],
         readTime,
+        image: (data.image as string) ?? undefined,
       };
     });
   return posts.sort((a, b) => (a.date < b.date ? 1 : -1));
@@ -58,6 +60,7 @@ export async function getPostBySlug(slug: string): Promise<Post> {
     excerpt: data.excerpt as string,
     tags: (data.tags as string[]) ?? [],
     readTime,
+    image: (data.image as string) ?? undefined,
     contentHtml,
   };
 }
