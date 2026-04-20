@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { getAllPosts } from "@/lib/posts";
 import PostCard from "@/components/PostCard";
+import NewsletterSection from "@/components/NewsletterSection";
 
 export default function Home() {
   const recentPosts = getAllPosts().slice(0, 5);
@@ -62,6 +63,8 @@ export default function Home() {
           </div>
         )}
       </section>
+
+      <NewsletterSection />
     </main>
   );
 }
